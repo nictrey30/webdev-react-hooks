@@ -14,6 +14,7 @@ class ClassContextComponent extends Component {
   render() {
     return (
       <ThemeContext.Consumer>
+        {/* takes a single function that it has the value of our Provider, and whatever the function returns it will render */}
         {(darkTheme) => {
           return <div style={this.themeStyles(darkTheme)}>Class Theme</div>;
         }}
