@@ -1,3 +1,18 @@
+input {
+  display: block;
+  padding: 5px;
+  font-size: 2rem;
+  width: 50%;
+}
+button,
+.output {
+  font-size: 2rem;
+  padding: 5px;
+  width: 50%;
+}
+.output {
+  border: 1px solid grey;
+}
 .App {
   text-align: center;
 }
