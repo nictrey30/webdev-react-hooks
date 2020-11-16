@@ -20,10 +20,10 @@ function App() {
   //   return 0;
   // });
   const [theme, setTheme] = useState('blue');
-  function changeCount(amount) {
+  const changeCount = (amount) => {
     // any time you are modifying state where you actually are using the previous value of your state to create the new value you need to use the function version for setting your state with the prevValue
     setCount((prevCount) => prevCount + amount);
-  }
+  };
   function reset() {
     setCount(0);
   }
