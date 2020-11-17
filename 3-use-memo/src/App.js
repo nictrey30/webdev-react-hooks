@@ -9,13 +9,16 @@ function App() {
   const [number, setNumber] = useState(0);
   const [dark, setDark] = useState(false);
 
-  // slowFunction will be called every time the App gets rendered, including when we change only the theme, so in order to avoid that when our number doesn't change we can use useMemo to cache the result of the function when the number doesn't change
+  // slowFunction will be called every time the App gets rendered, including when we change only the theme, so in order to avoid that when our number doesn't change we can use useMemo to cache the result of the function when the number doesn't change, but when our number changes we need to re-run the code inside the useMemo hook
   // const doubleNumber = slowFunction(number);
   const doubleNumber = useMemo(() => {
-    // when our number changes we need to re-run the code inside the useMemo hook
+    // return the thing that we are caching(memoize)
     return slowFunction(number);
+    // when the number changes, because it is in the options array the code inside this useMemo hook will run again, but if our number doesn't change we don't need to re-run the slowFunction's function code
   }, [number]);
 
+  // useMemo - for caching a value so that we don't need to recompute it every single time the App gets re-rendered
+  // another use case for useMemo is for referential inequality
   const themeStyles = useMemo(() => {
     return {
       backgroundColor: dark ? 'black' : 'white',
@@ -53,3 +56,7 @@ function slowFunction(num) {
 }
 
 export default App;
+
+// the 2 big use cases for memo
+// 1. when you want to don't re-compute a slow function every time the App gets re-rendered if the inputs don't change
+// 2. referential equality - whenever you want to make sure that the reference of an object or an array is exactly the same as the last time you rendered if none of the internal workings changed, you want to use useMemo here to make sure you only update the reference of the object whenever the actual contents of the object change, instead of updating it every single time you render
