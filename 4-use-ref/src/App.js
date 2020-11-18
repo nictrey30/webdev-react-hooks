@@ -12,7 +12,7 @@ function App() {
 
   // useEffect(() => {
   //   setRenderCount((prevCount) => prevCount + 1);
-  // }); - will throw an infinite loop
+  // }); - will throw an infinite loop, because when you update the state, it will cause the component to re-render
 
   useEffect(() => {
     renderCount.current = renderCount.current + 1;
