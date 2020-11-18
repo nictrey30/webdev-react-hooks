@@ -10,6 +10,6 @@ export const countReducer = (state, action) => {
     case DECREMENT:
       return { count: count - 1 };
     default:
-      return { count };
+      return state;
   }
 };
