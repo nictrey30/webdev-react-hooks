@@ -1,14 +1,13 @@
 import React, { useReducer, useState } from 'react';
 import todoReducer from './reducers/todoReducer';
 import { ACTIONS } from './actions';
+import Todo from './components/Todo';
 
-const newTodo = (name) => {
-  return {
-    id: Date.now(),
-    name,
-    complete: false
-  };
-};
+const newTodo = (name) => ({
+  id: Date.now(),
+  name,
+  complete: false
+});
 
 export default function App() {
   const [name, setName] = useState('');
@@ -21,7 +20,7 @@ export default function App() {
     setName('');
   };
 
-  console.log(todos);
+  // console.log(todos);
 
   return (
     <>
@@ -34,6 +33,9 @@ export default function App() {
           onChange={(e) => setName(e.target.value)}
         />
       </form>
+      {todos.map((todo) => (
+        <Todo key={todo.id} todo={todo} dispatch={dispatch} />
+      ))}
     </>
   );
 }
